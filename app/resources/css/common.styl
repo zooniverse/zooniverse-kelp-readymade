@@ -1,0 +1,29 @@
+MEDIUM_GRAY = #555
+
+#_RESET_BUTTON
+  background: transparent
+  border: 0
+  color: inherit
+  cursor: pointer
+  font: inherit
+  line-height: inherit
+  margin: 0
+  padding: 0
+  text-shadow: inherit
+
+  &:disabled
+    opacity: 0.5
+    pointer-events: none
+
+is-a-column(cols, gutter=2em)
+  float: left
+  margin-left: gutter
+
+  // TODO: This isn't quite wide enough.
+  column-width = unit(100 / cols, '%')
+  column-extra = unit(1 / cols, unit(gutter))
+  width: "calc((%s + %s) - %s)" % (column-width column-extra gutter)
+
+  &:nth-of-type({cols}n+1)
+    clear: left
+    margin-left: 0

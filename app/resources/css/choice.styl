@@ -1,0 +1,121 @@
+.readymade-choice-input-wrapper
+  position: relative
+
+  input
+    position: absolute
+    visibility: hidden
+
+.readymade-choice-clickable
+  background: rgba(MEDIUM_GRAY, 0.5)
+  border-radius: 3px
+  box-sizing: border-box
+  cursor: pointer
+  margin-bottom: 5px
+  padding: 5px 10px
+  position: relative
+  width: 100%
+
+  &:hover
+    background rgba(black, 0.25)
+
+[data-filtered] + .readymade-choice-clickable
+  opacity: 0.33
+
+:focus + .readymade-choice-clickable
+  outline: 1px dotted // TODO: Glow? Probably depends on the browser.
+
+:active + .readymade-choice-clickable
+  background: rgba(black, 0.5)
+  color: white
+
+[type="radio"],
+[type="checkbox"]
+  & + .readymade-choice-clickable .readymade-choice-tickbox
+    border: 2px solid
+    display: inline-block
+    vertical-align: middle
+    height: 1em
+    position: relative
+    width: 1em
+
+[type="radio"] + .readymade-choice-clickable
+  .readymade-choice-tickbox
+    border-radius: 50%
+
+  .readymade-choice-tick
+    SPACE = 3px
+    border-radius: 50%
+    bottom: SPACE
+    left: SPACE
+    position: absolute
+    right: SPACE
+    top: SPACE
+
+[type="radio"]:checked + .readymade-choice-clickable .readymade-choice-tick
+  background: currentColor
+
+[type="checkbox"] + .readymade-choice-clickable
+  .readymade-choice-tick:before,
+  .readymade-choice-tick:after
+    background: currentColor
+    display: none
+    content: ""
+    height: 0.8em
+    left: 50%
+    position: absolute
+    top: 50%
+    transform: translate(-50%, -50%) rotate(45deg)
+    width: 2px
+
+  .readymade-choice-tick:after
+    transform: translate(-50%, -50%) rotate(-45deg)
+
+[type="checkbox"]:checked + .readymade-choice-clickable
+  .readymade-choice-tick:before,
+  .readymade-choice-tick:after
+    display: block
+
+[type="radio"] + .readymade-choice-drawing .readymade-choice-tickbox
+  display: none
+
+:checked + .readymade-choice-drawing
+  background: rgba(black, 0.5)
+  color: white
+
+  &:before
+    border: 7px solid transparent
+    border-left-width: 0
+    border-right-color: rgba(black, 0.5)
+    content: ""
+    position: absolute
+    right: 100%
+    top: 50%
+    transform: translateY(-50%)
+
+.readymade-choice-image
+  display: inline-block
+  line-height: 1
+  vertical-align: middle
+
+  img
+    display: block
+
+.readymade-choice-label
+  display: inline-block
+  vertical-align: middle
+
+.readymade-choice-color
+  OFFSET = 3px
+  background: currentColor
+  bottom: OFFSET
+  border-radius: 1em
+  position: absolute
+  right: OFFSET
+  top: OFFSET
+  width: 5px
+
+  :checked + .readymade-choice-clickable &
+    box-shadow: 0 0 3px, 0 0 10px
+
+.readymade-choice-button .readymade-choice-tickbox
+  display: none

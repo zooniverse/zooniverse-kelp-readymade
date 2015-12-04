@@ -1,0 +1,100 @@
+.readymade-subject-viewer
+  .marking-surface
+    display: block
+    margin: 0 auto
+
+  .marking-surface-svg
+    color: lime
+    display: inline
+    height: 100%
+    width: 100%
+
+  .readymade-coordinates-label
+    font-size: 10px
+    font-weight: bold
+    opacity: 0
+    pointer-events: none
+    transition: opacity 0.5s
+
+    rect
+      fill: rgba(black, 0.5)
+
+    text
+      fill: white
+
+  .marking-surface-tool[data-show-coordinates][data-selected] .readymade-coordinates-label
+    opacity: 1
+    transition: none
+
+  .marking-surface-tool-controls-container
+    width: 100% // TODO: This should be the default.
+
+  .marking-surface-tool-controls
+    background: rgba(white, 0.75)
+    color: black
+    padding: 0.5em
+    text-align: left
+
+    .readymade-choice-clickable
+      background: transparent
+
+    .decision-tree-confirmation
+      display: none
+
+  button[name="readymade-destroy-drawing"]
+    @extends #_RESET_BUTTON
+    background: black
+    border-radius: 50%
+    color: white
+    height: 1.5em
+    line-height: 1
+    position: absolute
+    right: -0.75em
+    top: -0.75em
+    width: 1.5em
+
+    &:hover
+      background: red
+
+  .readymade-frame-controls
+    line-height: 1
+
+    &[data-single-frame]
+      // NOTE: This won't work if we ever put anything other than frame controls here (metadata, etc.).
+      display: none
+
+  .readymade-frame-play-controls
+    display: inline-block
+    margin-right: 10px
+
+    button
+      @extends #_RESET_BUTTON
+      width: 1.5em
+      height: 1.5em
+
+      &:disabled
+        display: none
+
+  .readymade-frame-toggles-list
+    display: inline-block
+
+    button
+      @extends #_RESET_BUTTON
+      background: rgba(black, 0.5)
+      border-radius: 50%
+      color: transparent
+      height: 1em
+      width: 1em
+      overflow: hidden
+      position: relative
+
+      &[data-selected]:before
+        SPACE = 4px
+        background: white
+        border-radius: 50%
+        bottom: SPACE
+        content: ""
+        left: SPACE
+        position: absolute
+        right: SPACE
+        top: SPACE
