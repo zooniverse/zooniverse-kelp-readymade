@@ -15,6 +15,8 @@ class Project
 
   background: ''
   id: ''
+  apiHost: null
+  apiProxyPath: null
 
   producer: ''
   title: ''
@@ -43,8 +45,7 @@ class Project
       @siteBackground = new SiteBackground src: @background
       @siteBackground.el.appendTo document.body
 
-    if @id
-      @connect @id
+    @connect() if @id
 
     @header = new SiteHeader
       template: SiteHeader::template @
@@ -98,8 +99,8 @@ class Project
 
     User.fetch()
 
-  connect: (project) ->
-    @api = new Api {project}
+  connect: ->
+    @api = new Api project: @id, host: @apiHost, path: @apiProxyPath
     @topBar = new TopBar
     @topBar.el.appendTo document.body
 

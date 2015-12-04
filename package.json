@@ -1,6 +1,6 @@
 {
   "name": "zooniverse-kelp-readymade",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "bin": {
     "zooniverse-readymade": "./bin/zooniverse-readymade"
   },
